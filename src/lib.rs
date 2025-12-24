@@ -14,6 +14,8 @@ pub mod pcs;
 pub mod cloudkit;
 pub mod statuskit;
 pub mod keychain;
+pub mod immich;
+pub mod immich_sync;
 pub use imessage::cloud_messages;
 pub use imessage::posterkit;
 pub use util::KeyedArchive;

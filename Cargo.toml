@@ -11,7 +11,7 @@ macos-validation-data = ["dep:open-absinthe"]
 [dependencies]
 plist = "1.7.0"
 tokio = { version = "1", features = ["full"] }
-reqwest = { version = "0.11", features = ["json", "rustls-tls", "gzip", "stream", "rustls-tls-webpki-roots"] }
+reqwest = { version = "0.11", features = ["json", "rustls-tls", "gzip", "stream", "rustls-tls-webpki-roots", "multipart"] }
 serde = { version = "1.0", features = ["derive"] }
 openssl = { version = "0.10.56", features = ["vendored"] }
 uuid = { version = "1.4.1", features = ["v4"] }
@@ -61,6 +61,11 @@ prost-build = { version = "0.12.0" }
 name = "rustpush-test"
 required-features = ["macos-validation-data"]
 path = "src/test.rs"
+
+[[bin]]
+name = "immich-sync"
+required-features = ["macos-validation-data"]
+path = "src/immich-sync.rs"
 
 [lib]
 name = "rustpush"

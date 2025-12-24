@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Immich server base URL (without /api path) -->
+    <key>immich_server_url</key>
+    <string>http://localhost:2283</string>
+
+    <!-- Immich API key - generate from Immich settings with these permissions:
+         - asset.read
+         - asset.upload
+         - album.read
+         - album.write -->
+    <key>immich_api_key</key>
+    <string>YOUR_API_KEY_HERE</string>
+
+    <!-- Automatically approve new shared album invitations -->
+    <key>auto_approve_shares</key>
+    <true/>
+
+    <!-- Send push notifications for manual approval (when auto_approve is false) -->
+    <key>push_notification_approval</key>
+    <true/>
+
+    <!-- How often to check for changes and sync (in seconds) -->
+    <key>sync_interval_secs</key>
+    <integer>60</integer>
+
+    <!-- Temporary directory for downloading/uploading files -->
+    <key>temp_dir</key>
+    <string>/tmp/rustpush-immich-sync</string>
+
+    <!-- Device identifier for Immich uploads (can be any unique string) -->
+    <key>device_id</key>
+    <string>rustpush-sync-device</string>
+</dict>
+</plist>
