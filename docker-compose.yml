@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  immich-sync:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rustpush-immich-sync
+    restart: unless-stopped
+
+    # Environment variables
+    environment:
+      - RUST_LOG=info  # Change to 'debug' for verbose logging
+
+    # Mount configuration directory
+    volumes:
+      - ./config:/app/config
+      - immich-sync-temp:/tmp/rustpush-immich-sync
+
+    # Network mode - use host network if Immich is on localhost
+    # Otherwise, connect to the same network as Immich
+    # network_mode: host
+    networks:
+      - immich
+
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "immich-sync"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  immich-sync-temp:
+    driver: local
+
+networks:
+  immich:
+    # Use external network if Immich is in a separate docker-compose
+    # external: true
+    driver: bridge

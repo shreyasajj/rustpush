@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+.gitmodules
+
+# Build artifacts
+target/
+**/*.rs.bk
+*.pdb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Configuration files (will be mounted as volumes)
+config.plist
+hwconfig.plist
+immich-config.plist
+
+# Documentation
+*.md
+!README.md
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Temporary files
+/tmp/
+*.tmp
+
+# macOS
+.DS_Store
+
+# Test files
+tests/

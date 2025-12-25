@@ -26,20 +26,39 @@ Features:
 
 ### Quick Start
 
-1. Build the immich-sync binary:
-   ```bash
-   cargo build --release --features macos-validation-data --bin immich-sync
-   ```
+**Option 1: Docker (Recommended)**
 
-2. Copy and configure the example config:
-   ```bash
-   cp immich-config.example.plist immich-config.plist
-   # Edit immich-config.plist with your Immich server URL and API key
-   ```
+```bash
+# 1. Prepare config directory
+mkdir -p config
+cp immich-config.example.plist config/immich-config.plist
+# Edit config/immich-config.plist with your Immich server URL and API key
 
-3. Run the sync service:
-   ```bash
-   ./target/release/immich-sync
-   ```
+# 2. Authenticate with Apple (one-time setup)
+cargo run --release --features macos-validation-data --bin rustpush-test
+cp config.plist hwconfig.plist config/
 
-See [IMMICH_INTEGRATION.md](IMMICH_INTEGRATION.md) for detailed setup instructions.
+# 3. Run with Docker Compose
+docker-compose up -d
+
+# 4. View logs
+docker-compose logs -f immich-sync
+```
+
+**Option 2: Build from Source**
+
+```bash
+# 1. Build the binary
+cargo build --release --features macos-validation-data --bin immich-sync
+
+# 2. Configure
+cp immich-config.example.plist immich-config.plist
+# Edit immich-config.plist with your settings
+
+# 3. Run
+./target/release/immich-sync
+```
+
+**Documentation:**
+- 📖 [Full Integration Guide](IMMICH_INTEGRATION.md)
+- 🐳 [Docker Deployment Guide](DOCKER.md)

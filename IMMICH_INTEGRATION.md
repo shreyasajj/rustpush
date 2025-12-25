@@ -24,6 +24,18 @@ This integration enables bidirectional synchronization between Apple Shared Albu
 
 ## Installation
 
+### Option 1: Docker (Recommended)
+
+The easiest way to run the sync service is using Docker:
+
+```bash
+# See full Docker documentation
+```
+
+**[📦 Docker Deployment Guide →](DOCKER.md)**
+
+### Option 2: Build from Source
+
 Build the immich-sync binary:
 
 ```bash
